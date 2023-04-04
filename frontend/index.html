@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="modal">
+            <div class="logarCadastrar">
+                <div class="yourName">
+                    <img src="./images/rioCoast.svg">
+                </div>
+                <div class="box">
+                    <h2> Faça login ou se cadastre para receber promoções e descontos em viagens! </h2>
+                    <form action="http://localhost:3000/login" method="post">
+                        <h4>Logar-se</h4>
+                        <div id="error-email" style="display: none">Email ou senha inválidos</div>
+                        <div id="login-errors"></div>
+                        <input class="inputLabel" type="text" id="email" placeholder="email" name="email"data-error-id="error-message-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+                        <input class="inputLabel" type="text" id="senha" placeholder="senha" name="password" data-error-id="error-message-senha" minlength="7" maxlength="12" required/>
+                        <button type="submit">Entrar</button>
+                    </form>
+                    <form action="http://localhost:3000/cadastrar" method="post">
+                        <h4>Cadastrar-se</h4>
+                        <div id="cadastrar-errors"></div>
+                        <input class="inputLabel" type="text" id="nome" placeholder="nome completo" name="nome" data-error-id="error-message-nome" pattern="[a-zA-Z ]+" required/>
+                        <input class="inputLabel"  type="text" id="email" placeholder="email" name="email" data-error-id="error-message-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+                        <input class="inputLabel" type="text" id="senha" placeholder="senha" name="password"  data-error-id="error-message-senha" minlength="7" maxlength="12" required/>
+                        <button type="submit">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="store">
+            <h1 class="title">disponibilidade de viagens</h1>
+            <div class="storeArea">
+            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="/">Principal</a></li>
+                <li><a href="/">Destinos</a></li>
+                <li><a href="/">Pacotes</a></li>
+                <li><a href="/">Promoção</a></li>
+                <li><a href="/">Sobre</a></li>
+
+            </ul>
+            <div class="search">
+                <input placeholder="Buscar destino" type="text"/>
+                <button class="btnSearch">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                </button>
+            </div>            
+        </div>
+        <div class="buyBag" style="height: 80px">
+            <div class="icon">
+                <h4 class="title" id="cartTitle">Carrinho de compras</h4>
+                <span class="material-symbols-outlined" onclick="cartList()" id="cart" style="font-size: 40px; margin: 10px;">
+                    shopping_cart
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function redirect(){
+            return "/home"
+        }
+
+        const errorMessage = (showError, errorMessage) =>{
+            const errorId = input.getAttribute('data-error-id');
+            const errorElement = document.querySelector(`#${errorId}`);
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message');
+            errorDiv.innerHTML = errorMessage;
+            errorElement.appendChild(errorDiv);
+        }
+
+        function addProduct(produto, fatherDiv) {
+            let product = document.createElement("div");
+            product.classList.add("product");
+
+            let image = document.createElement("img");
+            image.classList.add("productImage");
+            const imagem = produto.imagem;
+            const baseUrl = "http://localhost:3000";
+            image.src = `.${imagem}`;
+
+            let productDescription = document.createElement("div");
+            productDescription.classList.add("productDescription");
+
+            let productName = document.createElement("h3");
+            productName.classList.add("productName");
+            productName.textContent = produto.nome;
+
+            let valor = document.createElement("h5");
+            valor.classList.add("valor");
+            valor.textContent = `R$ ${produto.preco}`;
+
+            let sumOrSub = document.createElement("div");
+            sumOrSub.classList.add("moreOrLess");
+
+            let spanAdd = document.createElement("span");
+            spanAdd.setAttribute("class", "material-symbols-outlined");
+            spanAdd.setAttribute("id", "add");
+            spanAdd.setAttribute("onclick", "add()");
+            spanAdd.textContent = "add";
+
+            let quantity = document.createElement("h2");
+            quantity.setAttribute("id", "quantity");
+            quantity.textContent = "0";
+
+            let spanSub = document.createElement("span");
+            spanSub.setAttribute("class", "material-symbols-outlined");
+            spanSub.setAttribute("id", "sub");
+            spanSub.setAttribute("onclick", "sub()");
+            spanSub.textContent = "remove";
+
+            sumOrSub.appendChild(valor);
+            sumOrSub.appendChild(spanAdd);
+            sumOrSub.appendChild(quantity);
+            sumOrSub.appendChild(spanSub);
+            productDescription.appendChild(productName);
+            product.appendChild(image);
+            product.appendChild(productDescription);
+            product.appendChild(sumOrSub);
+
+            let finalAppend = document.querySelector(fatherDiv);
+            finalAppend.appendChild(product);
+            }
+
+        fetch("http://localhost:3000/produtos")
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((produto) => {
+                    produto.nomeImagem = produto.imagem.split("/").pop();
+                    console.log(produto)
+                    addProduct(produto, '.storeArea');
+                });
+            });
+
+
+        async function add(){
+            console.log("funciona")
+            var quantity = await document.querySelector("#quantity")
+            var valor = 1;
+            quantity.innerHTML = await valor + parseInt(quantity.innerHTML)
+        }
+
+        async function sub(){
+            var quantity = await document.querySelector("#quantity")
+            if(parseInt(quantity.innerHTML)>0){
+                var valor = 1;
+                quantity.innerHTML = await parseInt(quantity.innerHTML) - valor
+            }
+        }
+
+        function cartList(){
+            let cart = document.querySelector("#cart")
+            let buyBag = document.querySelector(".buyBag")
+            let icon = document.querySelector(".icon")
+            let title = document.querySelector("#cartTitle")
+            if(buyBag.style.height!=="80px"){;
+                title.style.display = 'none';
+                icon.style.justifyContent = 'spaceBetween'
+                buyBag.style.height = "80px";
+                buyBag.style.width = "80px";
+                buyBag.style.borderRadius = "100%";
+                cart.innerText = "shopping_cart";
+                buyBag.style.justifyContent = "center"
+                buyBag.style.alignItems = "center";
+            } else {
+                icon.style.justifyContent = 'center'
+                title.style.display = 'flex'
+                buyBag.style.height = "600px";
+                buyBag.style.width = "450px";
+                buyBag.style.borderRadius = "10px";
+                cart.innerText = "close";
+                buyBag.style.justifyContent = "end"
+                buyBag.style.alignItems = "start";
+            }
+        }
+
+        function changeValor(elem, elemVal, inform, custo){
+            let valor = document.querySelector(elemVal);
+            let valorInicial = valor;
+            let card = document.querySelector(elem);
+            let info = document.querySelector(inform)
+            card.style.transition = "all 1s"
+            if (card.style.height === "500px"){
+                info.style.display = "none"
+                card.style.height = "200px"
+                valor.innerText = "Expandir";
+                valor.style.fontWeight = "200";
+            } else {
+                info.style.display = "flex"
+                card.style.height = "500px"
+                valor.innerText = custo;
+                valor.style.fontWeight = "500";
+            }
+    }
+    //DataBase
+    (async () => {
+        const db = require("/sql/db.js");
+        console.log('Conectado ao banco de dados')
+        console.log('SELECT * FROM userdatabase.products')
+        const products = await db.selectProducts()
+        console.log(products)
+    })
+
+
+    </script>    
+</body>
+</html>

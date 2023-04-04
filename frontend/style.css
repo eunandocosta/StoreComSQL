@@ -1,0 +1,435 @@
+*{
+    margin-right: 0;
+    margin: 0;
+    border: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100vw;
+    position: fixed;
+    justify-content: space-around;
+    background: #fff;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
+    align-items: center;
+    height: 60px;
+    
+}
+
+.search{
+    width: 22%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btnSearch{
+    border-radius: 0 50px 50px 0;
+    background-color: #fff;
+    border: #6aa6a6 1px solid;
+
+}
+
+.search>input{
+    border: solid #6aa6a6 1px;
+    border-right: 0px;
+    border-radius: 4px 0 0 4px;
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+}
+
+button:hover{
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.menu>ul{
+    flex-wrap: wrap;
+    display: flex;
+    flex-flow: row;
+    gap: 30px;
+    font-size: 18px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    list-style: none;
+    outline-style: none;
+    text-transform: uppercase;
+    padding: 0;
+    align-items: center;
+    width: fit-content;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.menu>ul>li{
+    display: flex;
+    flex-direction: wrap row;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+a{
+    color:#3a7a7a;
+    text-decoration: none;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal{
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+    border: #6aa6a6 20px solid inset;
+    background-color: #112836;
+    background-image: url("./images/praia.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    flex-wrap: wrap;
+    animation: imageFade 1s;
+    animation-timing-function: ease-in-out;
+    animation-play-state: running;
+    animation-fill-mode: forwards;
+}
+
+.logarCadastrar{
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.box{
+    display: flex;
+    justify-content:space-around;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    width: 60%;
+    height: fit-content;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    animation-name: sliderRight;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+    opacity: 1;
+    transition: ease;
+    padding: 20px;
+}
+
+.box> form >button{
+    width: 140px;
+    height: 30px;
+    background-color:#6aa6a6 ;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.box> form >input{
+    width: 250px;
+    height: 24px;
+    outline: #6aa6a6 2px solid;
+    border-radius: 1px;
+    background-color: #fff;
+}
+
+.logarCadastrar > .box > h2{
+    font-size: 32px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    display: flex;
+    color: #6aa6a6;
+    animation-name: sliderRight;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+    opacity: 1;
+    transition: ease;
+}
+
+.yourName{
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.box>form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 10px;
+}
+
+.yourName > img{
+    width: 100%;
+    filter: drop-shadow(0, 0, 10px, rgba(0, 0, 0, 0.8));
+    animation-name: sliderLeft;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-play-state: running;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+    opacity: 0;
+    transition: ease;
+    text-align: center;
+    align-items: left;
+}
+
+.box > form > h4{
+    font-family: 'Heebo', sans-serif;
+    font-size: 28px;
+    color: #f2ae2e;
+    font-weight: 400;
+}
+
+.buyBag{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: #F6EBEA;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+}
+
+.icon{
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.icon>.title{
+    display: none;
+    font-size: 26px;
+    justify-content: start;
+    padding-left: 10px;
+    font-weight: 300;
+}
+
+.icon > span:hover{
+    opacity: 0.7;
+}
+
+.icon > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 360;
+}
+
+.store{
+    background-color: #6aa6a6;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.storeArea{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+}
+
+.product{
+    width: 228px;
+    height: 310px;
+    margin: 5px;
+    color: #112836;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.757);
+    background-color: #fff9f1;
+    flex-flow: column;
+}
+
+.product:hover{
+    background-color: rgb(255, 237, 213);
+    color: #193C50;
+    width: calc(228px*1.1);
+    height: calc(310px*1.1);
+}
+
+.product>img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.productDescription{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+}
+
+.productName{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h5.valor{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #F02400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    color: #112836;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 40px;
+}
+
+.moreOrLess{
+    flex-flow: row wrap;
+    gap: 10px;
+    border-radius: 4px;
+    color: #F02400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.moreOrLess>h2{
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    appearance: none;
+    outline: none;
+    text-align: center;
+    border-radius: 100%;
+    color: #F02400;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+}
+
+.moreOrLess > span{
+    cursor: pointer;
+}
+
+
+
+@keyframes sliderLeft {
+    from{
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes sliderRight {
+    from{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundAnimate{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes imageFade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        background-image: url("./images/praia.jpg");
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2 class="title">Cadastro de Produto</h2>
+            <form action="http://localhost:3000/produtos" method="post" enctype="multipart/form-data">
+                <label class="form">Produto</label>
+                <input type="text" name="nome">
+                <label class="form">Valor</label>
+                <input type="number" name="preco">
+                <label class="form">Quantidade Disponível</label>
+                <input name="quantidade">
+                <label class="form">Descrição</label>
+                <input name="description" class="description">
+                <label class="form">Imagem Ilustrativa</label>
+                <input type="file" name="imagens" multiple>
+                <button type="submit">Enviar</button>
+            </form>
+        </div> 
+    </div>    
+</body>
+</html>

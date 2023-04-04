@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widListth=device-widListth, initial-scale=1.0">
+    <link rel="stylesheet" href="./frontend/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addProduct()">Gere conteúdo dinâmico</button>
+    <div class="recebe"></div>
+    <script>
+
+        document.body.onload = addProduct()
+            function addProduct(){
+            let product = document.createElement("div")
+            product.classList.add('product')
+
+            let image = document.createElement("img")
+            image.classList.add("productImage")
+
+            let productDescription = document.createElement("div")
+            productDescription.classList.add("productDescription")
+
+            let productName = document.createElement("h3")
+            productName.classList.add("productName")
+
+            let valor = document.createElement("h5")
+            valor.classList.add("valor")
+
+            let sumOrSub = document.createElement("div");
+            sumOrSub.classList.add("moreOrLess");
+
+            let spanAdd = document.createElement("span");
+            spanAdd.setAttribute("class", "material-symbols-outlined");
+            spanAdd.setAttribute("id", "add");
+            spanAdd.textContent = "add";
+
+            let quantity = document.createElement("h2");
+            quantity.setAttribute("id", "quantity");
+            quantity.textContent = "0";
+
+            let spanSub = document.createElement("span");
+            spanSub.setAttribute("class", "material-symbols-outlined");
+            spanSub.setAttribute("id", "sub");
+            spanSub.textContent = "remove";
+            
+            sumOrSub.appendChild(valor)
+            sumOrSub.appendChild(spanAdd)
+            sumOrSub.appendChild(quantity)
+            sumOrSub.appendChild(spanSub)
+            productDescription.appendChild(productName)
+            product.appendChild(image)
+            product.appendChild(productDescription)
+            product.appendChild(sumOrSub)
+
+
+            let recebe = document.querySelector(".recebe")
+            recebe.appendChild(product)
+        }
+    </script>
+</body>
+</html>
